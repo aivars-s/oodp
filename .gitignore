@@ -1,0 +1,11 @@
+# IntelliJ
+/.idea
+/.settings
+*.iml
+
+# Eclipse
+/bin
+.classpath
+.project
+
+target
