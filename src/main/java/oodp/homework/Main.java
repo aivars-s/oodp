@@ -1,5 +1,14 @@
 package oodp.homework;
 
+import oodp.homework.game.Game;
+import oodp.homework.game.GameDecorator;
+import oodp.homework.game.GameImpl;
+import oodp.homework.game.GameMemento;
+import oodp.homework.game.player.MaxAmountPlayer;
+import oodp.homework.game.player.MinAmountPlayer;
+import oodp.homework.game.player.Player;
+import oodp.homework.game.player.RandomAmountPlayer;
+
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;

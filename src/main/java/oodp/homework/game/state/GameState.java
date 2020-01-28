@@ -1,4 +1,6 @@
-package oodp.homework;
+package oodp.homework.game.state;
+
+import oodp.homework.game.Game;
 
 public interface GameState {
 

@@ -1,4 +1,6 @@
-package oodp.homework;
+package oodp.homework.game.player;
+
+import oodp.homework.game.Game;
 
 public class MaxAmountPlayer implements Player  {
 

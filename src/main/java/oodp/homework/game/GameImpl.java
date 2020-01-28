@@ -1,4 +1,8 @@
-package oodp.homework;
+package oodp.homework.game;
+
+import oodp.homework.game.player.Player;
+import oodp.homework.game.state.GameState;
+import oodp.homework.game.state.GameStateOngoing;
 
 import java.util.List;
 
