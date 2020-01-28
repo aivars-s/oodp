@@ -1,11 +1,9 @@
 package oodp.homework.game;
 
-import oodp.homework.game.player.Player;
 import oodp.homework.game.state.GameState;
 import oodp.homework.game.state.GameStateOngoing;
 
 import java.util.Deque;
-import java.util.List;
 
 public class GameDecorator implements Game {
 
@@ -70,18 +68,8 @@ public class GameDecorator implements Game {
     }
 
     @Override
-    public void setCurrentNumber(int number) {
-        game.setCurrentNumber(number);
-    }
-
-    @Override
     public int getTargetNumber() {
         return game.getTargetNumber();
-    }
-
-    @Override
-    public void setTargetNumber(int number) {
-        game.setCurrentNumber(number);
     }
 
     @Override
@@ -90,48 +78,8 @@ public class GameDecorator implements Game {
     }
 
     @Override
-    public void setMinAllowedNumber(int number) {
-        game.setMinAllowedNumber(number);
-    }
-
-    @Override
     public int getMaxAllowedNumber() {
         return game.getMaxAllowedNumber();
-    }
-
-    @Override
-    public void setMaxAllowedNumber(int number) {
-        game.setMaxAllowedNumber(number);
-    }
-
-    @Override
-    public List<Player> getPlayers() {
-        return game.getPlayers();
-    }
-
-    @Override
-    public void setPlayers(List<Player> players) {
-        game.setPlayers(players);
-    }
-
-    @Override
-    public Player getCurrentPlayer() {
-        return game.getCurrentPlayer();
-    }
-
-    @Override
-    public void setCurrentPlayer(Player player) {
-        game.setCurrentPlayer(player);
-    }
-
-    @Override
-    public int getCurrentPlayerNumber() {
-        return game.getCurrentPlayerNumber();
-    }
-
-    @Override
-    public void setCurrentPlayerNumber(int number) {
-        game.setCurrentPlayerNumber(number);
     }
 
     @Override
@@ -142,11 +90,6 @@ public class GameDecorator implements Game {
     @Override
     public void setRunning(boolean running) {
         game.setRunning(running);
-    }
-
-    @Override
-    public GameState getState() {
-        return game.getState();
     }
 
     @Override

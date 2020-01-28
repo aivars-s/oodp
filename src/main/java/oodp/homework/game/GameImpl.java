@@ -141,18 +141,8 @@ public class GameImpl implements Game {
     }
 
     @Override
-    public void setCurrentNumber(int number) {
-        currentNumber = number;
-    }
-
-    @Override
     public int getTargetNumber() {
         return targetNumber;
-    }
-
-    @Override
-    public void setTargetNumber(int number) {
-        targetNumber = number;
     }
 
     @Override
@@ -161,55 +151,8 @@ public class GameImpl implements Game {
     }
 
     @Override
-    public void setMinAllowedNumber(int number) {
-        minAllowedNumber = number;
-    }
-
-    @Override
     public int getMaxAllowedNumber() {
         return maxAllowedNumber;
-    }
-
-    @Override
-    public void setMaxAllowedNumber(int number) {
-        maxAllowedNumber = number;
-    }
-
-    @Override
-    public List<Player> getPlayers() {
-        return players;
-    }
-
-    @Override
-    public void setPlayers(List<Player> players) {
-        this.players = players;
-    }
-
-    @Override
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }
-
-    @Override
-    public void setCurrentPlayer(Player player) {
-        int index = players.indexOf(player);
-        if (index  != -1) {
-            currentPlayerNumber = index;
-            currentPlayer = players.get(index);
-        }
-    }
-
-    @Override
-    public int getCurrentPlayerNumber() {
-        return currentPlayerNumber;
-    }
-
-    @Override
-    public void setCurrentPlayerNumber(int number) {
-        if (number >= 0 && number < players.size()) {
-            currentPlayerNumber = number;
-            currentPlayer = players.get(number);
-        }
     }
 
     @Override
@@ -220,11 +163,6 @@ public class GameImpl implements Game {
     @Override
     public void setRunning(boolean running) {
         this.running = running;
-    }
-
-    @Override
-    public GameState getState() {
-        return state;
     }
 
     @Override
