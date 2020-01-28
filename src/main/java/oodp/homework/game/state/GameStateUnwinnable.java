@@ -1,6 +1,7 @@
 package oodp.homework.game.state;
 
 import oodp.homework.game.Game;
+import oodp.homework.game.callback.GameCallback;
 
 public class GameStateUnwinnable implements GameState  {
 
@@ -12,10 +13,10 @@ public class GameStateUnwinnable implements GameState  {
 
     private GameStateUnwinnable() {}
 
-    public void updateState(Game game) {
+    public void updateState(Game game, GameCallback callback) {
         System.out.println("GameStateUnwinnable --- updating state");
-        if (game.isRunning()) {
-            game.setRunning(false);
+        if (callback.isRunning()) {
+            game.stop();
         }
     }
 

@@ -1,7 +1,6 @@
 package oodp.homework;
 
 import oodp.homework.game.Game;
-import oodp.homework.game.GameDecorator;
 import oodp.homework.game.GameImpl;
 import oodp.homework.game.GameMemento;
 import oodp.homework.game.player.MaxAmountPlayer;
@@ -36,12 +35,11 @@ public class Main {
 
         Game game3 = new GameImpl(game1Players);
         Deque<GameMemento> game3Mementos = new ArrayDeque<>();
-        Game game3Decorator = new GameDecorator(game3, game3Mementos);
-        game3Decorator.start();
+        game3.doBeforeUpdate(() -> game3Mementos.push(game3.createMemento()));
+        game3.start();
         while (!game3Mementos.isEmpty()) {
-            game3Decorator.restore(game3Mementos.pop());
+            game3.restore(game3Mementos.pop());
         }
     }
-
 
 }

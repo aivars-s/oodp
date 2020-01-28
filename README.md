@@ -19,9 +19,8 @@ The program implements three types of player logic:
 
 ## Used patterns
 
-### Decorator
-Used for `GameDecorator` to create mementos of the current state of the `Game`
-implementation before each player's turn.
+### Strategy
+Used for `Game` to allow optional externally provided action before update
 
 ### Memento
 Used by the `Game` implementations to create representations of its' previous states.
@@ -52,6 +51,9 @@ increasing the allowed values.
 For the player classes it might be more appropriate to have them make use of
 classes implementing the strategy pattern, rather than using the template method
 pattern themselves. This would allow their logic to change on the fly.
+
+The strategy pattern, unlike the decorator pattern, can help to eliminate unneeded
+getters and setters.
 
 ## Class diagram
 ![Class diagram](classDiagram.png)

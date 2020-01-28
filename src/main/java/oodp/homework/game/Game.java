@@ -8,6 +8,8 @@ import java.util.List;
 public interface Game {
     void start();
 
+    void stop();
+
     void update();
 
     void currentPlayerPerformMove();
@@ -22,18 +24,5 @@ public interface Game {
 
     void restore(GameMemento memento);
 
-    int getCurrentNumber();
-
-    int getTargetNumber();
-
-    int getMinAllowedNumber();
-
-    int getMaxAllowedNumber();
-
-    boolean isRunning();
-
-    void setRunning(boolean running);
-
-    void setState(GameState state);
-
+    void doBeforeUpdate(Runnable runnable);
 }

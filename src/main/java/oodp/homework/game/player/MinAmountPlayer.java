@@ -1,6 +1,7 @@
 package oodp.homework.game.player;
 
 import oodp.homework.game.Game;
+import oodp.homework.game.callback.GameCallback;
 
 public class MinAmountPlayer implements Player {
 
@@ -12,12 +13,12 @@ public class MinAmountPlayer implements Player {
 
     private MinAmountPlayer() {}
 
-    public void performMove(Game game) {
+    public void performMove(Game game, GameCallback callback) {
         System.out.println("MinAmountPlayer --- performing move");
-        int currentNumber = game.getCurrentNumber();
-        int targetNumber = game.getTargetNumber();
-        int minAllowedNumber = game.getMinAllowedNumber();
-        int maxAllowedNumber = game.getMaxAllowedNumber();
+        int currentNumber = callback.getCurrentNumber();
+        int targetNumber = callback.getTargetNumber();
+        int minAllowedNumber = callback.getMinAllowedNumber();
+        int maxAllowedNumber = callback.getMaxAllowedNumber();
         int bestNumber = targetNumber - currentNumber;
 
         if (bestNumber >= minAllowedNumber && bestNumber <= maxAllowedNumber) {

@@ -1,6 +1,7 @@
 package oodp.homework.game.state;
 
 import oodp.homework.game.Game;
+import oodp.homework.game.callback.GameCallback;
 
 public class GameStateWon implements GameState {
 
@@ -12,9 +13,11 @@ public class GameStateWon implements GameState {
 
     private GameStateWon() {}
 
-    public void updateState(Game game) {
+    public void updateState(Game game, GameCallback callback) {
         System.out.println("GameStateWon --- updating state");
-        game.setRunning(false);
+        if (callback.isRunning()) {
+            game.stop();
+        }
     }
 
     @Override

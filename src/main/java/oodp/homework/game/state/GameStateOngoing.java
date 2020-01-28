@@ -1,6 +1,7 @@
 package oodp.homework.game.state;
 
 import oodp.homework.game.Game;
+import oodp.homework.game.callback.GameCallback;
 
 public class GameStateOngoing implements GameState {
 
@@ -12,23 +13,24 @@ public class GameStateOngoing implements GameState {
 
     private GameStateOngoing() {}
 
-    public void updateState(Game game) {
+    public void updateState(Game game, GameCallback callback) {
         System.out.println("GameStateOngoing --- updating state");
-        game.currentPlayerPerformMove();
 
-        int currentNumber = game.getCurrentNumber();
-        int targetNumber = game.getTargetNumber();
-        int minAllowedNumber = game.getMinAllowedNumber();
-        int maxAllowedNumber = game.getMaxAllowedNumber();
+        int currentNumber = callback.getCurrentNumber();
+        int targetNumber = callback.getTargetNumber();
+        int minAllowedNumber = callback.getMinAllowedNumber();
+        int maxAllowedNumber = callback.getMaxAllowedNumber();
 
         if (currentNumber > targetNumber || maxAllowedNumber < minAllowedNumber) {
             System.out.println("GameStateOngoing --- updating state -> unwinnable");
-            game.setState(GameStateUnwinnable.getInstance());
+            callback.getStateConsumer().accept(GameStateUnwinnable.getInstance());
         } else if (currentNumber == targetNumber) {
             System.out.println("GameStateOngoing --- updating state -> won");
-            game.setState(GameStateWon.getInstance());
+            callback.getStateConsumer().accept(GameStateWon.getInstance());
         } else {
             System.out.println("GameStateOngoing --- updating state -> ongoing");
+            game.currentPlayerPerformMove();
+            callback.getStateConsumer().accept(this);
             game.nextPlayer();
         }
     }

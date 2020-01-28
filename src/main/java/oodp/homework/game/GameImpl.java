@@ -1,5 +1,6 @@
 package oodp.homework.game;
 
+import oodp.homework.game.callback.GameCallback;
 import oodp.homework.game.player.Player;
 import oodp.homework.game.state.GameState;
 import oodp.homework.game.state.GameStateOngoing;
@@ -21,6 +22,7 @@ public class GameImpl implements Game {
     private List<Player> players;
     private Player currentPlayer;
     private int currentPlayerNumber;
+    private Runnable beforeUpdate;
 
     public GameImpl(List<Player> players) {
         this(DEFAULT_TARGET_NUMBER, players);
@@ -53,7 +55,21 @@ public class GameImpl implements Game {
     }
 
     @Override
+    public void stop() {
+        System.out.println("GameImpl --- stopping");
+        running = false;
+    }
+
+    private void setState(GameState state) {
+        this.state = state;
+    }
+
+    @Override
     public void update() {
+        if (beforeUpdate != null) {
+            System.out.println("GameImpl --- executing before update");
+            beforeUpdate.run();
+        }
         System.out.println("GameImpl --- updating");
         System.out.println(String.format(
                 "  current player:     %s - %s",
@@ -63,12 +79,27 @@ public class GameImpl implements Game {
         System.out.println("  current number:     " + currentNumber);
         System.out.println("  min allowed number: " + minAllowedNumber);
         System.out.println("  max allowed number: " + maxAllowedNumber);
-        state.updateState(this);
+
+        state.updateState(this, new GameCallback(
+                currentNumber,
+                targetNumber,
+                minAllowedNumber,
+                maxAllowedNumber,
+                running,
+                this::setState
+        ));
     }
 
     @Override
     public void currentPlayerPerformMove() {
-        currentPlayer.performMove(this);
+        currentPlayer.performMove(this, new GameCallback(
+                currentNumber,
+                targetNumber,
+                minAllowedNumber,
+                maxAllowedNumber,
+                running,
+                null
+        ));
         incrementAllowedNumbers();
     }
 
@@ -136,38 +167,8 @@ public class GameImpl implements Game {
     }
 
     @Override
-    public int getCurrentNumber() {
-        return currentNumber;
-    }
-
-    @Override
-    public int getTargetNumber() {
-        return targetNumber;
-    }
-
-    @Override
-    public int getMinAllowedNumber() {
-        return minAllowedNumber;
-    }
-
-    @Override
-    public int getMaxAllowedNumber() {
-        return maxAllowedNumber;
-    }
-
-    @Override
-    public boolean isRunning() {
-        return running;
-    }
-
-    @Override
-    public void setRunning(boolean running) {
-        this.running = running;
-    }
-
-    @Override
-    public void setState(GameState state) {
-        this.state = state;
+    public void doBeforeUpdate(Runnable runnable) {
+        beforeUpdate = runnable;
     }
 
 }
