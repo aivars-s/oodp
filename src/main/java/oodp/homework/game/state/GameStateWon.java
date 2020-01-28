@@ -4,11 +4,13 @@ import oodp.homework.game.Game;
 
 public class GameStateWon implements GameState {
 
-    private static GameStateWon instance = new GameStateWon();
+    private static final GameStateWon INSTANCE = new GameStateWon();
 
     public static GameStateWon getInstance() {
-        return instance;
+        return INSTANCE;
     }
+
+    private GameStateWon() {}
 
     public void updateState(Game game) {
         System.out.println("GameStateWon --- updating state");

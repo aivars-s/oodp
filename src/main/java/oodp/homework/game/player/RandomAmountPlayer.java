@@ -6,10 +6,10 @@ import java.util.Random;
 
 public class RandomAmountPlayer implements Player  {
 
-    private static RandomAmountPlayer instance = new RandomAmountPlayer();
+    private static final RandomAmountPlayer INSTANCE = new RandomAmountPlayer();
 
     public static RandomAmountPlayer getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     Random random;

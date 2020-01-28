@@ -4,11 +4,13 @@ import oodp.homework.game.Game;
 
 public class GameStateOngoing implements GameState {
 
-    private static GameStateOngoing instance = new GameStateOngoing();
+    private static final GameStateOngoing INSTANCE = new GameStateOngoing();
 
     public static GameStateOngoing getInstance() {
-        return instance;
+        return INSTANCE;
     }
+
+    private GameStateOngoing() {}
 
     public void updateState(Game game) {
         System.out.println("GameStateOngoing --- updating state");

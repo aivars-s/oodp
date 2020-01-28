@@ -4,10 +4,10 @@ import oodp.homework.game.Game;
 
 public class MaxAmountPlayer implements Player  {
 
-    private static MaxAmountPlayer instance = new MaxAmountPlayer();
+    private static final MaxAmountPlayer INSTANCE = new MaxAmountPlayer();
 
     public static MaxAmountPlayer getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     private MaxAmountPlayer() {}

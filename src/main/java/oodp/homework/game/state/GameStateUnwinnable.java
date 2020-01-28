@@ -4,11 +4,13 @@ import oodp.homework.game.Game;
 
 public class GameStateUnwinnable implements GameState  {
 
-    private static GameStateUnwinnable instance = new GameStateUnwinnable();
+    private static final GameStateUnwinnable INSTANCE = new GameStateUnwinnable();
 
     public static GameStateUnwinnable getInstance() {
-        return instance;
+        return INSTANCE;
     }
+
+    private GameStateUnwinnable() {}
 
     public void updateState(Game game) {
         System.out.println("GameStateUnwinnable --- updating state");

@@ -4,10 +4,10 @@ import oodp.homework.game.Game;
 
 public class MinAmountPlayer implements Player {
 
-    private static MinAmountPlayer instance = new MinAmountPlayer();
+    private static final MinAmountPlayer INSTANCE = new MinAmountPlayer();
 
     public static MinAmountPlayer getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     private MinAmountPlayer() {}
